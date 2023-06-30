@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>digitalClock.html</title>
+<style>
+
+body { background-color: lightyellow; } 
+h3 { text-align: center; margin-top:50px;  }
+button { position: fixed; right: 0px; top: 0px; }	
+p { background-color: gray; color:white; width: 500px; height: 100px ; text-align: center; margin: 0 auto;
+	line-height: 100px; position: relative; top: 100px; font-weight: bold; 
+	font-size: 40px; }
+
+
+</style>
+</head>
+<body >
+
+	<h3>오전 | 오후 배경 색상 변경 및 오늘 날짜 표시</h3>
+	
+	<button type="button" onclick="today()">What day is today?</button>  
+	<!-- 버튼으로 말고 페이지가 로드되면 바로 알림창이 뜨도록 -->
+
+<script>
+
+	var now = new Date();
+	
+	function start() {
+		var oneSecTime = setInterval(nowTime,1000);
+	}
+	
+	function nowTime () {}
+		
+		var hour = now.getHours();
+		var min = now.getMinutes();
+		var sec = now.getSeconds(); 
+		
+		var time = now.toLocaleString().substr(12);  		// toLocalString에서 오후 뒤에부터 다 가져옴
+		var timeoo = now.toLocaleString().substr(13,2);    // 오전 오후
+			
+		 document.write('<p id="todayTime">'+ timeoo +' '+hour + '시 ' + min + '분 ' + sec + '초 '+'</p>'); 
+		
+		//document.write('<p id="todayTime">' + timeoo  + +'</p>');   // p태그에 스타일 지정, 여기에 p태그를 하면 스타일 입혀짐.
+		
+		if(timeoo == '오전'){									// 오전 오후로 구분해서 배경색이 바뀐다.
+			document.querySelector("body").style.background = "lightyellow";
+		}else{
+			document.querySelector("body").style.background = "lightgray";
+		}
+			
+		// 인터벌로 초를 계속 움직인다. 그럼 실시간반영 화면 전체를 말고 시간만 인터벌로 ?
+	  // function nowTime end
+	
+	function today(){
+			
+		var year = now.getFullYear();
+		var mon = now.getMonth() +1 ;
+		var date = now.getDate();
+		var day = now.getDay();
+			
+		switch(day){
+		case 0 : day = '일'; break;
+		case 1 : day = '월'; break;
+		case 2 : day = '화'; break;
+		case 3 : day = '수'; break;
+		case 4 : day = '목'; break;
+		case 5 : day = '금'; break;
+		case 6 : day = '토'; break;
+	
+		}
+			
+		alert('오늘은 '+ year + '년 ' + mon + '월 ' + date + '일 ' + day + '요일 입니다.' )
+	}
+		
+ 	function jupsok () {
+ 		// 들어가자마자 알림창으로 밑에 접속 인터넷 표시 
+  		// ( 크롬으로 ,엣지로 접속중이면 ..로 접속중, 익스플로어는 지원하지 않습니다.)
+  		// navigator.userAgent.indexOf 해서 찾는다. 없으면 -1임.
+ 	}
+  
+</script>
+
+</body>
+</html>
