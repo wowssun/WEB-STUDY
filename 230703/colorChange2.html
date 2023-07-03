@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>colorChange.html</title>
+<style>
+#rec { border: 1px solid black;   width: 500px; height: 400px;
+		 position: absolute; left: 400px; top: 150px;  text-align: center;
+		}
+div { padding: 20px;}		
+label { font-size: 20px;}
+
+ input { outline: 5px solid  transparent; } 
+			
+
+</style>
+</head>
+<body>
+
+<div id="rec">
+	<h1>change colors</h1>
+	<div><label>background  　
+		<input type="color" id="bg" onchange="changebg()"><span id="bgspa">　#000000</span>  <!--onclick이 아닌 onchange로  -->
+	</label></div>
+	<div><label>font　　　　　
+		<input type="color" id="ft" onchange="changeft()"><span id="ftspa">　#000000</span>
+	</label></div>
+	<div><label>border　 　 　
+		<input type="color" id="bd" onchange="changebd()"><span id="bdspa">　#000000</span>
+	</label></div>
+	<hr>
+	<button type="button" onclick="location.reload()">RESET</button>
+</div>
+
+<script>
+
+	function changebg(){   // 배경화면 바꾼다.
+		var chbg = document.getElementById("bg").value;   	// 배경 // 콘솔에 찍어보면 이렇게 나옴 ex) #9f4141
+		document.querySelector("body").style.background = chbg;
+		document.querySelector("#bgspa").innerHTML  ="　"+ chbg;
+	}
+	function changeft() {
+		var chft = document.getElementById("ft").value;	  	// font
+		document.querySelector("body").style.color = chft;
+		document.querySelector("#ftspa").innerHTML  ="　"+ chft;
+	}
+	function changebd() {
+		var chbd = document.getElementById("bd").value;		// border
+		var chbdall = document.querySelectorAll("input"); // input은 여러개 그래서 배열로 가져와서
+		for(var i = 0; i<chbdall.length; i++){  // 반복문돌려서 모든 input에 스타일 적용
+			chbdall[i].style.outlineColor = chbd;
+		}
+		document.querySelector("#bdspa").textContent  ="　"+ chbd;
+		
+	}	
+
+
+</script>
+</body>
+</html>
