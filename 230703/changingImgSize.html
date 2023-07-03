@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>changingImgSize.html</title>
+</head>
+<body>
+	<h3>changing image size</h3>
+	
+	<input type="file" id="files" onchange="setImg()"  accept="image/png, image/jpg"> <br><br>
+	
+	<button type="button" onclick="change('+')">+</button>
+	<button type="button" onclick="change('-')">-</button>
+	<button type="button" onclick="change('x')">X</button>
+	<br>
+	<hr>
+	
+	<p id="currentSize">현재 이미지의 크기 : 100 X 100</p>	
+
+	<img id="images" src ="../images/5.png" width="100" height="100">  
+	
+<!-- 10 씩 증감 x는초기화   최대 200  -->
+
+<script>
+	// 이미지에 width, height 기본값을 미리 준다. 
+	// 이미지 태그에 함수이름을 같게 주고 onclick
+	// 함수를 매개변수를 받아 오는것만 다르게  function 같은함수이름 (sign) 스위치문을 준다.
+	// 최대값과 최소값을 미리 설정 var max = 200; var min = 10; 
+	// case '+' : if 문으로 최대크기 조건주고 크게
+	// 스위치문 밖에서 출력문 한번만
+	
+	// 이미지만 바꾸는건 src만 바꾸면 된다. 값 문자열은 항상 C:\fakepath\를 앞에 포함합니다.
+	// 이미지 input file onchange = 함수이름, setimage함수 해서 이미지 객체를 찾고 이미지
+
+	//src ="../images/5.png"   모든 파일을 찾으면 이렇게 나와서 이걸 없애줘야 한다? C:\fakepath\
+	
+	var img = document.querySelector('#images');
+	
+	var max = 200;
+	var min = 10;
+	
+	function change(sign) {
+		switch(sign){
+			case '+' : if(img.width >= max || img.height >= max ){
+							alert('현재 최대 크기입니다.'); 
+						}else{
+							img.width += 10;
+							img.height += 10;
+						}
+						break;			
+			case '-' : if(img.width <= min || img.height <= min) {
+							alert('현재 최소 크기입니다.');
+						}else{
+							img.width -= 10;
+							img.height -= 10;
+						}
+						break;
+			default: alert('기본 크기로 설정되었습니다.');
+						img.width = 100;
+						img.height = 100;
+		}
+		
+		document.getElementById("currentSize").innerText = '현재 이미지의크기 : ' + img.width + 'X' + img.height ;
+		
+	}
+	
+	function setImg(){
+		console.log(document.getElementById('files').value);
+		
+	}
+
+</script>
+</body>
+</html>
