@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>gawiBawiBo2.html</title>
+<style>	
+
+fieldset {border: 3px solid lightpink; padding-top : 20px; text-align: center;
+			border-radius: 20px; box-shadow: 2px 2px 2px gray; 
+			width: 600px; height:450px;  }
+
+.one { position: relative; right: -100px; top: 100px; }
+.two {position: relative; right: -900px; top: -380px; }	
+.three {position: relative; right: -100px; top: -400px;  visibility: hidden;  }				
+			
+legend { text-align: center; font-weight: bold;   }
+
+.two .random { animation-name: move;  animation-iteration-count:infinite; animation-duration: 0.5s; }
+
+
+img {  margin:10px; padding: 5px; width: 160px; height: 160px;   }
+
+
+.one .game:hover {border: 1px solid lightpink; border-radius: 20px; width: 160px; height: 160px; 
+				box-shadow: 2px 2px 2px gray; margin:9px;   }
+
+.start {position: absolute; left: 160px; top: 120px; }
+
+.deco { border: 5px solid white; background: pink; opacity: 0.9; 
+		color: white; text-shadow: 3px 3px 2px black; font-size: 70px; font-weight: 600;
+		 border-radius: 20px; text-align: center; width: 300px; height: 250px; line-height: 250px;
+		  box-shadow: 2px 2px 2px gray; }
+
+.result { position: absolute; left: 160px; top: 120px; }
+		
+.deco2 {border: 5px solid white; background: pink; opacity: 0.9; 
+		color: white; text-shadow: 3px 3px 2px black; font-size: 70px; font-weight: 600;
+		 border-radius: 20px; text-align: center; width: 300px; height: 250px; 
+		 box-shadow: 2px 2px 2px gray; padding-top: 20px;  }		 
+		 	 
+		 
+.deco3	{ border: 3px dashed white; background: pink; opacity: 0.9; color: white;
+			width: 90px; height: 30px; border-radius: 10px; text-align: center; 
+			line-height: 30px; font-size: 20px; font-weight:300; text-shadow: 2px 2px 2px black; }	
+						
+			
+.deco3:hover { background: white; border: 3px solid pink; color: deeppink;
+				font-size:20px; font-weight: 300; text-shadow: 2px 2px 2px black;  opacity: 0.9; }	
+
+
+.font { color: white; text-shadow: 2px 2px 1px gray; font-size: 25px; font-weight:bold;
+		position: absolute; left: 240px; top: 240px; }
+
+.stop { z-index: 99; position: absolute; left: 210px; top: 380px; }
+.continue { z-index: 99; position: absolute; left: 320px; top: 380px; }
+
+
+
+</style>
+</head>
+<body>
+	<div class="one">
+		<fieldset>
+			<legend>가위 바위 보 게임 ver 0.1</legend>
+			<img  src="../images/zerohand.png" alt="보">
+			<img  src="../images/versus.png" alt="vs">
+			<img  src="../images/why.png" alt="?"><br><hr><br>
+			<img class="gawi game" src="../images/twohand.png" alt="가위">
+			<img class="bawi game" src="../images/zerohand.png" alt="주먹">
+			<img class="bo game" src="../images/fivehand.png" alt="보">	
+			<div class="start deco" >START</div>
+		</fieldset>
+	</div>
+		
+	<div class="three">	
+				<div class="result deco2"  >U WIN!</div>
+				<div class="round font">[ ROUND 1 ]<br>
+				<!-- <div class="me font"> -->컴 0 VS. 1 나<br>
+				<!-- <div class="1win font">1 -->승 0무 0패</div>
+			    <div class="stop deco3" >그만</div>
+			    <div class="continue deco3" >계속</div>
+	</div>
+  
+ <!--  relative가 static인 상태를 기준으로 주어진 픽셀만큼 움직였다면,
+  absolute는 position: static 속성을 가지고 있지 않은 조상을 기준으로 움직입니다.
+  만약 조상 중에 포지션이 relative, absolute, fixed인
+  태그가 없다면 가장 위의 태그(body)가 기준이 됩니다. -->
+  
+ <!--  z-index는 태그들이 겹칠 때 누가 더 위로 올라가는지를 결정하는 속성입니다.
+  기본값은 0이고요. #top에 1을 주었기 때문에 다른 태그들보다 높게 위치합니다.-->
+  
+  
+<script>
+	
+	var start = document.querySelector('.start');
+	var game = document.querySelector('.game');
+	game.onmouseover = function(){
+		game[i].style.outlineColor = game;
+		this.style.border= '3px solid blue';
+	}
+	
+	start.onclick = function(){
+		this.style.visibility = 'hidden';
+	}
+</script>
+</body>
+</html>
